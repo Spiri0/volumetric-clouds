@@ -52,7 +52,7 @@ class Main {
 		const far = 1000000;
 		this.aspect = this.container.clientWidth / this.container.clientHeight; 
 		this.scene = new THREE.Scene();
-		this.scene.background = new THREE.Color( 0x000000 );
+		this.scene.background = new THREE.Color( 0x5cccfc );
 		
 		this.camera = new THREE.PerspectiveCamera( fov, this.aspect, near, far );
 		this.camera.position.set(10000, 15000, 10000);
