@@ -152,7 +152,8 @@ class Main {
 		this.renderer.render(this.scene, this.camera);
 		this.renderer.setRenderTarget( null );
 		
-		this.update();		
+		this.update();
+		
 		this.renderer.render(this.scene, this.camera);
 		this.composer.render();		
 	}//end render
