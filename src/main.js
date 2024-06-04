@@ -133,14 +133,14 @@ class Main {
 	
 	
 	update(){
-			this.clouds.uniforms.tDepth.value = this.target_.depthTexture;
-			this.clouds.uniforms.planetPos.value = new THREE.Vector3(0, 0, 0);		
-			this.clouds.uniforms.inverseProjection.value = this.camera.projectionMatrixInverse;
-			this.clouds.uniforms.inverseView.value = this.camera.matrixWorld;
-			this.clouds.uniforms.cameraPos.value = this.camera.position;
-			this.clouds.uniforms.sunDir.value = new THREE.Vector3(1, 1, 1);
-			this.clouds.uniforms.sunColor.value = new THREE.Vector3(1, 1, 1);	
-			this.clouds.uniformsNeedUpdate = true;
+		this.clouds.uniforms.tDepth.value = this.target_.depthTexture;
+		this.clouds.uniforms.planetPos.value = new THREE.Vector3(0, 0, 0);		
+		this.clouds.uniforms.inverseProjection.value = this.camera.projectionMatrixInverse;
+		this.clouds.uniforms.inverseView.value = this.camera.matrixWorld;
+		this.clouds.uniforms.cameraPos.value = this.camera.position;
+		this.clouds.uniforms.sunDir.value = new THREE.Vector3(1, 1, 1);
+		this.clouds.uniforms.sunColor.value = new THREE.Vector3(1, 1, 1);	
+		this.clouds.uniformsNeedUpdate = true;
 	
 	}
 	
