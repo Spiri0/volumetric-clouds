@@ -17,13 +17,13 @@ function main() {
 }
 
 class Main {
-	constructor(){
+	constructor() {
 		this.init();
 		this.animate();	
 	}
 	
 		
-	init(){
+	init() {
 
 		if (!WebGL.isWebGL2Available()) {
 			return false;
@@ -63,24 +63,20 @@ class Main {
 		this.controls.target.set(0, 0, 0);
 		this.controls.update();
 
-
 		this.composer = new EffectComposer(this.renderer);
 		const renderPass = new RenderPass(this.scene, this.camera);
 		this.composer.addPass(renderPass);
 		//-------------------------------------------------------------------------------------------------
-
-		
+	
 		let params = {
 			renderer: this.renderer,
 		}
-
 		
 		const geometry = new THREE.SphereGeometry( 1000, 32, 16 ); 
 		const material = new THREE.MeshBasicMaterial( { color: 0xffff00 } ); 
 		const sphere = new THREE.Mesh( geometry, material ); 
 		this.scene.add( sphere );
-		
-		
+			
 		this.resolution_ = new THREE.Vector2(); 
 		this.renderer.getDrawingBufferSize(this.resolution_);
 
@@ -92,7 +88,6 @@ class Main {
 		this.target_.depthTexture.type = THREE.FloatType;		
 		this.target_.depthTexture.minFilter = THREE.NearestFilter;
 		this.target_.depthTexture.magFilter = THREE.NearestFilter;
-	
 	
 	
 		const cloudmodel = new cloud_model.CloudModel(params);
@@ -122,7 +117,6 @@ class Main {
 		});			
 		
 
-
 		this.composer.addPass(new ShaderPass(this.clouds));
 
 
@@ -132,7 +126,8 @@ class Main {
 	}//end init	
 	
 	
-	update(){
+	update() {
+		
 		this.clouds.uniforms.tDepth.value = this.target_.depthTexture;
 		this.clouds.uniforms.planetPos.value = new THREE.Vector3(0, 0, 0);		
 		this.clouds.uniforms.inverseProjection.value = this.camera.projectionMatrixInverse;
@@ -141,17 +136,18 @@ class Main {
 		this.clouds.uniforms.sunDir.value = new THREE.Vector3(1, 1, 1);
 		this.clouds.uniforms.sunColor.value = new THREE.Vector3(1, 1, 1);	
 		this.clouds.uniformsNeedUpdate = true;
-	
 	}
 	
 	
-	animate(){
+	animate() {
+		
 		requestAnimationFrame( this.animate.bind(this) );  
 		this.render();
 	}//end animate
 	
 	
-	render(){
+	render() {
+		
 		this.renderer.setRenderTarget(this.target_);
 		this.renderer.render(this.scene, this.camera);
 		this.renderer.setRenderTarget( null );
@@ -163,24 +159,13 @@ class Main {
 	
 	
 	OnResize_() {
+
+		const width = this.container.clientWidth;
+		const height = this.container.clientHeight;
 		
-		let width, height;
-		
-		if(window.innerWidth > window.innerHeight){	
-			width = 1.0 * window.innerWidth;
-			height = 1.0 * window.innerHeight;				
-		}		
-		if(window.innerHeight > window.innerWidth){	
-			width = 1.0 * window.innerWidth;
-			height = 1.0 * window.innerHeight;				
-		}
-			
 		this.camera.aspect = width / height;
 		this.camera.updateProjectionMatrix();
-			
-    		
-		this.renderer.setSize(width, height);
-			
+		this.renderer.setSize(width, height);	
 	}
 	
 }//end class
