@@ -77,17 +77,17 @@ class Main {
 		const sphere = new THREE.Mesh( geometry, material ); 
 		this.scene.add( sphere );
 			
-		this.resolution_ = new THREE.Vector2(); 
-		this.renderer.getDrawingBufferSize(this.resolution_);
+		this.resolution = new THREE.Vector2(); 
+		this.renderer.getDrawingBufferSize(this.resolution);
 
-		this.target_ = new THREE.WebGLRenderTarget(this.resolution_.x, this.resolution_.y);		
-		this.target_.stencilBuffer = false;
-		this.target_.depthBuffer = true;
-		this.target_.depthTexture = new THREE.DepthTexture();
-		this.target_.depthTexture.format = THREE.DepthFormat;
-		this.target_.depthTexture.type = THREE.FloatType;		
-		this.target_.depthTexture.minFilter = THREE.NearestFilter;
-		this.target_.depthTexture.magFilter = THREE.NearestFilter;
+		this.target = new THREE.WebGLRenderTarget(this.resolution.x, this.resolution.y);		
+		this.target.stencilBuffer = false;
+		this.target.depthBuffer = true;
+		this.target.depthTexture = new THREE.DepthTexture();
+		this.target.depthTexture.format = THREE.DepthFormat;
+		this.target.depthTexture.type = THREE.FloatType;		
+		this.target.depthTexture.minFilter = THREE.NearestFilter;
+		this.target.depthTexture.magFilter = THREE.NearestFilter;
 	
 	
 		const cloudmodel = new cloud_model.CloudModel(params);
@@ -128,7 +128,7 @@ class Main {
 	
 	update() {
 		
-		this.clouds.uniforms.tDepth.value = this.target_.depthTexture;
+		this.clouds.uniforms.tDepth.value = this.target.depthTexture;
 		this.clouds.uniforms.planetPos.value = new THREE.Vector3(0, 0, 0);		
 		this.clouds.uniforms.inverseProjection.value = this.camera.projectionMatrixInverse;
 		this.clouds.uniforms.inverseView.value = this.camera.matrixWorld;
@@ -148,7 +148,7 @@ class Main {
 	
 	render() {
 		
-		this.renderer.setRenderTarget(this.target_);
+		this.renderer.setRenderTarget(this.target);
 		this.renderer.render(this.scene, this.camera);
 		this.renderer.setRenderTarget( null );
 		
@@ -170,6 +170,4 @@ class Main {
 	
 }//end class
 
-
-//export {main}
 main();
