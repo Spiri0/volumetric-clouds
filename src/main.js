@@ -25,9 +25,9 @@ class Main {
 		
 	init(){
 
-	   if (!WebGL.isWebGL2Available()) {
-        return false;
-      }
+		if (!WebGL.isWebGL2Available()) {
+			return false;
+		}
 	
 		const canvas = document.createElement('canvas');
 		const context = canvas.getContext('webgl2');
@@ -98,20 +98,20 @@ class Main {
 		const cloudmodel = new cloud_model.CloudModel(params);
 
 		let uniform = {			
-			'tDiffuse': { value: null },
-			'tDepth': { value: null },
-			'sunDir': { value: null },
-			'sunColor': { value: null },
-			'cameraForward': { value: null },
-			'inverseProjection': { value: null },
-			'inverseView': { value: null },
-			'cameraPos': { value: null },
-			'planetPos': { value: null },
-			'near': { value: near },
-			'far': { value: far },
-			'cloud': { value: cloudmodel.cloud},   
-			'worley': { value: cloudmodel.worley},   
-			'weather': { value: cloudmodel.weather},
+			tDiffuse: { value: null },
+			tDepth: { value: null },
+			sunDir: { value: null },
+			sunColor: { value: null },
+			cameraForward: { value: null },
+			inverseProjection: { value: null },
+			inverseView: { value: null },
+			cameraPos: { value: null },
+			planetPos: { value: null },
+			near: { value: near },
+			far: { value: far },
+			cloud: { value: cloudmodel.cloud},   
+			worley: { value: cloudmodel.worley},   
+			weather: { value: cloudmodel.weather},
 		}
 
 		this.clouds = new THREE.RawShaderMaterial({
@@ -167,19 +167,19 @@ class Main {
 		let width, height;
 		
 		if(window.innerWidth > window.innerHeight){	
-				width = 1.0 * window.innerWidth;
-				height = 1.0 * window.innerHeight;				
-			}		
-			if(window.innerHeight > window.innerWidth){	
-				width = 1.0 * window.innerWidth;
-				height = 1.0 * window.innerHeight;				
-			}
+			width = 1.0 * window.innerWidth;
+			height = 1.0 * window.innerHeight;				
+		}		
+		if(window.innerHeight > window.innerWidth){	
+			width = 1.0 * window.innerWidth;
+			height = 1.0 * window.innerHeight;				
+		}
 			
-			this.camera.aspect = width / height;
-			this.camera.updateProjectionMatrix();
+		this.camera.aspect = width / height;
+		this.camera.updateProjectionMatrix();
 			
     		
-			this.renderer.setSize(width, height);
+		this.renderer.setSize(width, height);
 			
 	}
 	
