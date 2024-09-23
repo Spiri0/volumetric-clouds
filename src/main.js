@@ -49,7 +49,7 @@ class Main {
 
 		const fov = 50;
 		const near = 0.1;
-		const far = 1e8;
+		const far = 1e6;
 		this.aspect = this.container.clientWidth / this.container.clientHeight; 
 		this.scene = new THREE.Scene();
 		this.scene.background = new THREE.Color( 0x5cccfc );
